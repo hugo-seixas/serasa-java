@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Gerenciador de Tarefas</title>
+<head th:replace="~{layoutBase :: head}">
 </head>
+
 <body>
-<h1>Testando a Home</h1>
+
+
+	<div th:replace="~{layoutBase :: navbar}"></div>
+
+	<div class="container mb-2">
+		<h1>Tarefas</h1>
+		<table class="table table-light">
+			<tr class="table-dark">
+				<th></th>
+				<th scope="col">Título</th>
+				<th scope="col">Descrição</th>
+				<th scope="col">Data da Conclusão</th>
+				<th scope="col">Status</th>
+				<th scope="col"></th>
+			</tr>
+
+			<tr th:each="task : ${tasks}">
+				<th scope="row"></th>
+				<td><span th:text="${task.titulo}"></span></td>
+				<td><span th:text="${task.descricao}"></span></td>
+				<td><span th:text="${task.dataConclusao}"></span></td>
+				<td><span th:text="${task.status}"></span></td>
+				<td class="buttons "><a th:href="@{form/{id}(id=${task.id})}"
+					th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+					<a th:href="@{delete/{id}(id=${task.id})}" th:method="delete"
+					class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+			</tr>
+		</table>
+
+		<a href="/form"><button class="btn btn-dark">Adicionar
+				Tarefa</button></a>
+	</div>
 </body>
+
 </html>

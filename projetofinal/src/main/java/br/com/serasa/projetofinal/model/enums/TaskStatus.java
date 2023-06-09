@@ -1,14 +1,17 @@
 package br.com.serasa.projetofinal.model.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public enum TaskStatus {
 	
-	PENDENTE("Pendente"), PROGRESSO("Em Progresso"), CONCLUIDA("Concluída");
+	PENDENTE("pendente"), PROGRESSO("progresso"), CONCLUIDA("concluida");
 
-	private String status;
+	private String value;
 
+	private TaskStatus(String value) {
+		this.value = value;
+	}
+
+	public String getStatus() {
+		return value;
+	}
+	
 }

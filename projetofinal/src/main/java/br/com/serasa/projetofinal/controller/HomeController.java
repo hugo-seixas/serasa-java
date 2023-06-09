@@ -29,7 +29,7 @@ public class HomeController {
 	@GetMapping
 	public String status(@RequestParam String status, Model model) {
 		TaskStatus taskStatus = TaskStatus.valueOf(status.toUpperCase());
-		List<Task> tasks = taskRepository.findByTaskStatus(taskStatus);
+		List<Task> tasks = taskRepository.findByStatus(taskStatus);
 
 		model.addAttribute("tasks", tasks);
 		return "home";

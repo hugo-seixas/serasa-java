@@ -30,10 +30,10 @@ public class Task {
 	private LocalDate dataConclusao;
 
 	@Enumerated(EnumType.STRING)
-	private TaskStatus taskStatus;
+	private TaskStatus status;
 
-	public void setTaskStatus(TaskStatus taskStatus) {
-		this.taskStatus = taskStatus;
+	public void setStatus(TaskStatus status) {
+		this.status = status;
 	}
 
 }

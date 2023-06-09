@@ -9,6 +9,6 @@ import br.com.serasa.projetofinal.model.enums.TaskStatus;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-	List<Task> findByTaskStatus(TaskStatus taskStatus);
+	List<Task> findByStatus(TaskStatus taskStatus);
 
 }

@@ -23,7 +23,7 @@ public class TaskController {
 	@GetMapping("/form")
 	public String taskForm(Task task) {
 
-		return "addTaskForm";
+		return "addTasksForm";
 	}
 
 	// Adiciona nova task
@@ -41,18 +41,18 @@ public class TaskController {
 
 	// Acessa o formulario de edição
 	@GetMapping("form/{id}")
-	public String updateTask(Model model, @PathVariable(name = "id") Long id) {
+	public String editTask(Model model, @PathVariable(name = "id") Long id) {
 
 		Task task = taskRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
 
 		model.addAttribute("task", task);
-		return "atualizaTask";
+		return "atualizaForm";
 	}
 
 	// Atualiza task
 	@PostMapping("update/{id}")
-	public String alterarProduto(@Valid Task task, BindingResult result, @PathVariable Long id) {
+	public String updateTask(@Valid Task task, BindingResult result, @PathVariable Long id) {
 
 		if (result.hasErrors()) {
 			return "redirect:/form";
@@ -64,7 +64,7 @@ public class TaskController {
 
 	@GetMapping("delete/{id}")
 	@CacheEvict(value = "task", allEntries = true)
-	public String delete(@PathVariable(name = "id") Long id, Model model) {
+	public String deleteTask(@PathVariable(name = "id") Long id, Model model) {
 
 		Task task = taskRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
