@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum TaskStatus {
 	
-	PENDENTE("Pendente"), PROGRESSO("Em Progresso"), CANCELADA("Cancelada"), CONCLUIDA("Concluída");
+	PENDENTE("Pendente"), PROGRESSO("Em Progresso"), CONCLUIDA("Concluída");
 
 	private String status;
 
